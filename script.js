@@ -7,7 +7,7 @@
 // Configuration & State
 // ============================================
 const OMDB_API_URL = 'https://www.omdbapi.com';
-const OMDB_API_KEY = 'YPUR_API_KEYU'; // Replace with your OMDb API key
+const OMDB_API_KEY = 'YOUR_API_KEYU'; // Replace with your OMDb API key
 
 const state = {
   isLoading: false,
