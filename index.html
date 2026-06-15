@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CineScope | Premium Movie Explorer</title>
+  <meta name="description" content="Discover movies like never before with CineScope — a premium movie search and explore experience." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Loading Screen -->
+  <div id="loading-screen" class="loading-screen">
+    <div class="loading-content">
+      <div class="loading-logo">
+        <span class="logo-icon">◈</span>
+        <span class="logo-text">CineScope</span>
+      </div>
+      <div class="loading-bar-container">
+        <div class="loading-bar"></div>
+      </div>
+      <p class="loading-subtitle">Preparing your cinema experience</p>
+    </div>
+  </div>
+
+  <!-- Background Effects -->
+  <div class="bg-effects">
+    <div class="gradient-mesh">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+    </div>
+    <div class="particles-container" id="particles"></div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-logo" aria-label="CineScope Home">
+        <span class="logo-icon">◈</span>
+        <span class="logo-text">CineScope</span>
+      </a>
+      <div class="nav-actions">
+        <button class="nav-btn" id="nav-search-btn" aria-label="Focus search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
+          <span class="shortcut">Ctrl K</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content" id="main">
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+      <div class="hero-container">
+        <div class="hero-text">
+          <h1 class="hero-title">
+            <span class="title-line reveal-text">Discover Movies</span>
+            <span class="title-line reveal-text">Like Never Before</span>
+          </h1>
+          <p class="hero-subtitle reveal-text">Search, explore, and dive into the world of cinema.</p>
+          <div class="hero-search-wrapper reveal-text">
+            <div class="search-box">
+              <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
+              <input type="text" id="search-input" class="search-input" placeholder="Search for a movie..." autocomplete="off" aria-label="Search for a movie" />
+              <button class="search-btn" id="search-btn" aria-label="Search">
+                <span>Search</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="poster-mockup poster-1">
+            <img src="https://m.media-amazon.com/images/M/MV5BMzFiNTVkZjYtM2I3Yi00MGNjLWEyYTAtMGViNGExZmMzMGMzXkEyXkFqcGc@._V1_QL75_UY562_CR35,0,380,562_.jpg" alt="Movie poster mockup" loading="lazy" />
+          </div>
+          <div class="poster-mockup poster-2">
+            <img src="https://m.media-amazon.com/images/M/MV5BMjIxMjgxNTk0MF5BMl5BanBnXkFtZTgwNjIyOTg2MDE@._V1_QL75_UX380_CR0,0,380,562_.jpg" alt="Movie poster mockup" loading="lazy" />
+          </div>
+          <div class="poster-mockup poster-3">
+            <img src="https://m.media-amazon.com/images/M/MV5BYmE4MmNjZjUtNTEyNy00NTZiLWE4NTktYjM2NjBhYzQ1N2IzXkEyXkFqcGc@._V1_QL75_UY562_CR1,0,380,562_.jpg" alt="Movie poster mockup" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recent Searches -->
+    <section class="recent-searches-section" id="recent-searches-section">
+      <div class="section-container">
+        <div class="section-header">
+          <h2 class="section-title">Recent Searches</h2>
+          <button class="clear-btn" id="clear-recent-btn">Clear History</button>
+        </div>
+        <div class="recent-searches-list" id="recent-searches-list"></div>
+      </div>
+    </section>
+
+    <!-- Favorites -->
+    <section class="favorites-section" id="favorites-section">
+      <div class="section-container">
+        <div class="section-header">
+          <h2 class="section-title">Your Favorites</h2>
+        </div>
+        <div class="favorites-grid" id="favorites-grid"></div>
+      </div>
+    </section>
+
+    <!-- Loading State -->
+    <section class="loading-state" id="loading-state">
+      <div class="section-container">
+        <div class="skeleton-grid">
+          <div class="skeleton-card">
+            <div class="skeleton-poster shimmer"></div>
+            <div class="skeleton-text shimmer"></div>
+            <div class="skeleton-text short shimmer"></div>
+          </div>
+          <div class="skeleton-card">
+            <div class="skeleton-poster shimmer"></div>
+            <div class="skeleton-text shimmer"></div>
+            <div class="skeleton-text short shimmer"></div>
+          </div>
+          <div class="skeleton-card">
+            <div class="skeleton-poster shimmer"></div>
+            <div class="skeleton-text shimmer"></div>
+            <div class="skeleton-text short shimmer"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results -->
+    <section class="results-section" id="results-section">
+      <div class="section-container" id="results-container"></div>
+    </section>
+
+    <!-- Error State -->
+    <section class="error-state" id="error-state">
+      <div class="section-container">
+        <div class="error-card" id="error-card"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" id="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <span class="logo-icon">◈</span>
+        <span class="logo-text">CineScope</span>
+      </div>
+      <p class="footer-copy">Powered by OMDb API. Crafted with precision.</p>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modal-overlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-label="Movie poster preview">
+      <button class="modal-close" id="modal-close" aria-label="Close modal">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+      </button>
+      <img id="modal-image" src="" alt="Movie poster preview" />
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
